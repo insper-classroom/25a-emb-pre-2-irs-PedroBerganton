@@ -9,13 +9,11 @@ volatile int FLAG_BOTAO_R = 1;
 volatile int FLAG_BOTAO_G = 1;
 
 void btn_callback(uint gpio, uint32_t events) {
-  if (events == 0x4) { // fall edge
-    if (gpio == BTN_PIN_R)
-      FLAG_BOTAO_R = 0;
-      // printf("fall red\n");
-    else if (gpio == BTN_PIN_G)
-      FLAG_BOTAO_G = 0;
-      // printf("fall green\n");
+  if (events == 0x4) {         // se for um FALL, botao foi apertado
+    FLAG_BOTAO_R = 0;
+  }
+  else if (events == 0x8){      // se botao foi solto, nao faca nada
+    FLAG_BOTAO_G = 0;
   }
 }
 

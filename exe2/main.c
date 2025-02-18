@@ -6,11 +6,12 @@ const int BTN_PIN_R = 28;
 const int LED = 4;
 
 volatile int FLAG_BOTAO = 1;
-volatile int sinal = 0;  
+
 
 void btn_callback(uint gpio, uint32_t events) {
   if (events == 0x4) {         // se for um FALL, botao foi apertado
-    FLAG_BOTAO = 0;}
+    FLAG_BOTAO = 0;
+  }
   else if (events == 0x8){      // se botao foi solto, nao faca nada
   }
 }
@@ -27,7 +28,8 @@ int main() {
   gpio_init(LED);
   gpio_set_dir(LED, GPIO_OUT);  
 
-
+  int sinal = 0;
+  
   while (true) {
     if (FLAG_BOTAO == 0){ //se botao estiver acionado
       FLAG_BOTAO = 1;
