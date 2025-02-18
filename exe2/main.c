@@ -9,8 +9,9 @@ volatile int FLAG_BOTAO = 1;
 volatile int sinal = 0;  
 
 void btn_callback(uint gpio, uint32_t events) {
-  if (events == 0x4) {         // se for um FALL, botao foi pressionado
-    FLAG_BOTAO = 0;
+  if (events == 0x4) {         // se for um FALL, botao foi apertado
+    FLAG_BOTAO = 0;}
+  else if (events == 0x8){      // se botao foi solto, nao faca nada
   }
 }
 
