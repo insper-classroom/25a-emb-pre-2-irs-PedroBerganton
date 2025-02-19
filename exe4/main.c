@@ -13,15 +13,12 @@ volatile int FLAG_BOTAO_G = 0;
 
 void btn_callback(uint gpio, uint32_t events) {
 
-  printf("entrou em callback");
   if (events == 0x4) {                                  // fall, botao apertado
-    printf("entrou em fall");
     if (gpio == BTN_PIN_R){
       FLAG_BOTAO_R = 1;
     }
   }
   else if (events == 0x8){
-    printf("entrou rise");
     if (gpio == BTN_PIN_G){
       FLAG_BOTAO_G = 1;
   }
